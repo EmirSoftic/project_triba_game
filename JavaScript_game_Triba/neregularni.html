@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div style="text-align: center">
+      <canvas id="canvas" width="1400" height="700"></canvas>
+    </div>
+
+    <script>
+      canvas = document.getElementById("canvas");
+      ctx = canvas.getContext("2d");
+      var circles = [];
+      var xevi = [];
+      var yoni = [];
+      var koordinate = [];
+      var koord = [];
+      var brojac = 0;
+      var pomocnibrojac = 0;
+      var brojacIgraci = 0;
+
+      //brojac za 3 tacke koji ce se resetovati
+      var trougaobrojac = 0;
+
+      //niz za truglove
+      var trouglovi = [];
+      //niz za linije
+      var linije = [];
+      //objekat za prvu liniju trougla
+      prvalinija = {};
+
+      circle = { x: 645, y: 320, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 645, y: 380, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 752, y: 320, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 752, y: 380, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 859, y: 260, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 966, y: 200, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1073, y: 140, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1180, y: 80, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 859, y: 440, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 966, y: 500, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1073, y: 560, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1180, y: 620, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 538, y: 440, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 431, y: 500, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 324, y: 560, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 217, y: 620, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 538, y: 260, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 431, y: 200, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 324, y: 140, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 217, y: 80, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 431, y: 380, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 431, y: 320, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 966, y: 320, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 966, y: 380, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1073, y: 440, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1180, y: 500, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1287, y: 560, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1073, y: 260, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1180, y: 200, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1287, y: 140, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 324, y: 260, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 217, y: 200, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 110, y: 140, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 324, y: 440, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 217, y: 500, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 110, y: 560, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 590, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 800, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 540, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 850, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 900, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 490, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1000, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 390, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1050, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 340, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1100, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 290, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 240, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1150, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 190, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1200, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 140, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1250, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 90, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 1300, y: 350, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 752, y: 260, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 752, y: 200, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 752, y: 140, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 752, y: 80, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 752, y: 440, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 752, y: 500, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 752, y: 560, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 752, y: 620, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 645, y: 260, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 645, y: 200, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 645, y: 140, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 645, y: 80, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 645, y: 440, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 645, y: 500, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 645, y: 560, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 645, y: 620, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 630, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 570, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 520, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 470, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 420, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 370, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 320, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 270, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 220, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 170, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 120, color: "gray", radius: 18 };
+      circles.push(circle);
+      circle = { x: 698.5, y: 70, color: "gray", radius: 18 };
+      circles.push(circle);
+
+      // Draw the circles on the canvas
+      function drawCircles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (circle of circles) {
+          ctx.beginPath();
+          ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = circle.color;
+          ctx.fill();
+        }
+        for (trougao of trouglovi) {
+          ctx.strokeStyle = trougao.color;
+          ctx.beginPath();
+          ctx.moveTo(trougao.x1, trougao.y1);
+          ctx.lineTo(trougao.x2, trougao.y2);
+          ctx.lineTo(trougao.x3, trougao.y3);
+          ctx.closePath();
+          ctx.stroke();
+        }
+      }
+
+      //funkcija za provjeru ima li presjeka
+      function presjek(l1x1, l1y1, l1x2, l1y2, l2x1, l2y1, l2x2, l2y2) {
+        l1vx = l1x2 - l1x1;
+        l1vy = l1y2 - l1y1;
+        l2vx = l2x2 - l2x1;
+        l2vy = l2y2 - l2y1;
+        product = l1vx * l2vy - l1vy * l2vx;
+        if (product === 0) {
+          return false;
+        }
+        t1 = (l2vx * (l1y1 - l2y1) - l2vy * (l1x1 - l2x1)) / product;
+        t2 = (l1vx * (l1y1 - l2y1) - l1vy * (l1x1 - l2x1)) / product;
+
+        if (t1 >= 0 && t1 <= 1 && t2 >= 0 && t2 <= 1) {
+          return true;
+        }
+        return false;
+      }
+
+      function povrsina(x1, y1, x2, y2, x3, y3) {
+        return Math.abs(
+          (x1 * y2 + x2 * y3 + x3 * y1 - x2 * y1 - x3 * y2 - x1 * y3) / 2
+        );
+      }
+
+      function tackaNaDuzi(x1, y1, x2, y2, x, y) {
+        if (x1 === x2) {
+          return x === x1 && y >= Math.min(y1, y2) && y <= Math.max(y1, y2);
+        } else if (y1 === y2) {
+          return y === y1 && x >= Math.min(x1, x2) && x <= Math.max(x1, x2);
+        } else {
+          var k = (y2 - y1) / (x2 - x1);
+          var b = y1 - k * x1;
+          return (
+            y === k * x + b && x >= Math.min(x1, x2) && x <= Math.max(x1, x2)
+          );
+        }
+      }
+
+      var provjeraBrojac = 0;
+      var provjera = true;
+      var brojacPoteza = 0;
+      function provjeriJeLiKraj() {
+        brojacPoteza++;
+        for (k1 of circles) {
+          for (k2 of circles) {
+            for (k3 of circles) {
+              if (
+                (k1.x === k2.x && k1.y === k2.y) ||
+                (k2.x === k3.x && k2.y === k3.y) ||
+                (k3.x === k1.x && k3.y === k1.y)
+              ) {
+              } else {
+                if (
+                  k1.color === "gray" &&
+                  k2.color === "gray" &&
+                  k3.color === "gray"
+                ) {
+                  if (povrsina(k1.x, k1.y, k2.x, k2.y, k3.x, k3.y) === 0) {
+                  } else {
+                    var brojacPresjeka = 0;
+                    for (linija of linije) {
+                      provjera = false;
+                      if (
+                        presjek(
+                          k1.x,
+                          k1.y,
+                          k2.x,
+                          k2.y,
+                          linija.x1,
+                          linija.y1,
+                          linija.x2,
+                          linija.y2
+                        ) === false &&
+                        presjek(
+                          k2.x,
+                          k2.y,
+                          k3.x,
+                          k3.y,
+                          linija.x1,
+                          linija.y1,
+                          linija.x2,
+                          linija.y2
+                        ) === false &&
+                        presjek(
+                          k3.x,
+                          k3.y,
+                          k1.x,
+                          k1.y,
+                          linija.x1,
+                          linija.y1,
+                          linija.x2,
+                          linija.y2
+                        ) === false
+                      ) {
+                        brojacPresjeka++;
+                        if (brojacPresjeka === linije.length) {
+                          provjera = true;
+                          provjeraBrojac++;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        if (provjeraBrojac > 1) {
+          provjera = true;
+          provjeraBrojac = 0;
+          return;
+        } else {
+          if (brojacPoteza > 1) {
+            return true;
+          }
+        }
+      }
+
+      function ekranKraj() {
+        window.location = "menu.html";
+      }
+
+      drawCircles();
+      ctx.strokeStyle = "blue";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(40, 40);
+      ctx.lineTo(40, 650);
+      ctx.closePath();
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(1360, 40);
+      ctx.lineTo(1360, 650);
+      ctx.closePath();
+      ctx.stroke();
+
+      // Add event listeners to the canvas to handle clicking on the circles
+      canvas.addEventListener("click", function (event) {
+        rect = canvas.getBoundingClientRect();
+        x = event.clientX - rect.left;
+        y = event.clientY - rect.top;
+        for (circle of circles) {
+          dx = x - circle.x;
+          dy = y - circle.y;
+          if (dx * dx + dy * dy <= circle.radius * circle.radius) {
+            if (circle.color === "gray") {
+              koord.push(circle.x);
+              koord.push(circle.y);
+              koordinate.push(circle.x);
+              koordinate.push(circle.y);
+              circle.color = "red";
+              drawCircles();
+              brojac++;
+              trougaobrojac++;
+              pomocnibrojac++;
+              if (pomocnibrojac === 2) {
+                if (linije.length === 0) {
+                  prvalinija.x1 = koordinate[0];
+                  prvalinija.y1 = koordinate[1];
+                  prvalinija.x2 = koordinate[2];
+                  prvalinija.y2 = koordinate[3];
+                } else {
+                  prvalinija.x1 = koordinate[0];
+                  prvalinija.y1 = koordinate[1];
+                  prvalinija.x2 = koordinate[2];
+                  prvalinija.y2 = koordinate[3];
+                  for (linija of linije) {
+                    if (
+                      presjek(
+                        prvalinija.x1,
+                        prvalinija.y1,
+                        prvalinija.x2,
+                        prvalinija.y2,
+                        linija.x1,
+                        linija.y1,
+                        linija.x2,
+                        linija.y2
+                      )
+                    ) {
+                      if (brojacIgraci % 2 === 0) {
+                        alert(
+                          "Linijom ste presjekli torougao stoga plavi igrac gubi"
+                        );
+                        ekranKraj();
+                      } else {
+                        alert(
+                          "Linijom ste presjekli torougao stoga žuti igrac gubi"
+                        );
+                        ekranKraj();
+                      }
+                      break;
+                    }
+                  }
+                }
+              }
+
+              if (trougaobrojac === 3) {
+                brojacIgraci++;
+                x1 = koordinate[0];
+                y1 = koordinate[1];
+                x2 = koordinate[2];
+                y2 = koordinate[3];
+                x3 = koordinate[4];
+                y3 = koordinate[5];
+                drugalinija = {};
+                trecalinija = {};
+                drugalinija.x1 = koordinate[2];
+                drugalinija.y1 = koordinate[3];
+                drugalinija.x2 = koordinate[4];
+                drugalinija.y2 = koordinate[5];
+                trecalinija.x1 = koordinate[0];
+                trecalinija.y1 = koordinate[1];
+                trecalinija.x2 = koordinate[4];
+                trecalinija.y2 = koordinate[5];
+                var P = povrsina(x1, y1, x2, y2, x3, y3);
+                if (P === 0) {
+                  if (brojacIgraci % 2 === 0) {
+                    alert("Žuti igrač je izabrao 3 kolinearne tačke te gubi.");
+                    ekranKraj();
+                  } else {
+                    alert("Plavi igrač je izabrao 3 kolinearne tačke te gubi.");
+                    ekranKraj();
+                  }
+                  break;
+                }
+
+                for (linija of linije) {
+                  if (
+                    presjek(
+                      drugalinija.x1,
+                      drugalinija.y1,
+                      drugalinija.x2,
+                      drugalinija.y2,
+                      linija.x1,
+                      linija.y1,
+                      linija.x2,
+                      linija.y2
+                    )
+                  ) {
+                    if (brojacIgraci % 2 === 0) {
+                      alert(
+                        "Linijom ste presjekli torougao stoga žuti igrac gubi"
+                      );
+                      ekranKraj();
+                      break;
+                    } else {
+                      alert(
+                        "Linijom ste presjekli torougao stoga plavi igrac gubi"
+                      );
+                      ekranKraj();
+                      break;
+                    }
+                  }
+                }
+                for (linija of linije) {
+                  if (
+                    presjek(
+                      trecalinija.x1,
+                      trecalinija.y1,
+                      trecalinija.x2,
+                      trecalinija.y2,
+                      linija.x1,
+                      linija.y1,
+                      linija.x2,
+                      linija.y2
+                    )
+                  ) {
+                    if (brojacIgraci % 2 === 0) {
+                      alert(
+                        "Linijom ste presjekli torougao stoga žuti igrac gubi"
+                      );
+                      ekranKraj();
+                      break;
+                    } else {
+                      alert(
+                        "Linijom ste presjekli torougao stoga plavi igrac gubi"
+                      );
+                      ekranKraj();
+                      break;
+                    }
+                  }
+                }
+                linije.push(prvalinija);
+                linije.push(drugalinija);
+                linije.push(trecalinija);
+                if (brojac % 6 < 3) {
+                  trougao = { x1, y1, x2, y2, x3, y3, color: "yellow" };
+                  trouglovi.push(trougao);
+                  ctx.strokeStyle = "yellow";
+                } else {
+                  trougao = { x1, y1, x2, y2, x3, y3, color: "blue" };
+                  trouglovi.push(trougao);
+                  ctx.strokeStyle = "blue";
+                }
+                ctx.beginPath();
+
+                ctx.moveTo(koordinate[0], koordinate[1]);
+                ctx.lineTo(koordinate[2], koordinate[3]);
+                ctx.lineTo(koordinate[4], koordinate[5]);
+                ctx.lineTo(koordinate[0], koordinate[1]);
+                ctx.closePath();
+                ctx.stroke();
+                if (provjeriJeLiKraj()) {
+                  if (brojacIgraci % 2 === 0) {
+                    alert(
+                      "plavi igrac vise nece imati poteza pa je on izgubio"
+                    );
+                    setTimeout(ekranKraj, "700");
+                    return;
+                  } else {
+                    alert("zuti igrac vise nece imati poteza pa je izgubio");
+                    setTimeout(ekranKraj, "700");
+                    return;
+                  }
+                }
+                for (circle of circles) {
+                  if (
+                    tackaNaDuzi(
+                      prvalinija.x1,
+                      prvalinija.y1,
+                      prvalinija.x2,
+                      prvalinija.y2,
+                      circle.x,
+                      circle.y
+                    )
+                  ) {
+                    if (circle.color === "gray") {
+                      circle.color = "red";
+                      drawCircles();
+                    }
+                  }
+                  if (
+                    tackaNaDuzi(
+                      drugalinija.x1,
+                      drugalinija.y1,
+                      drugalinija.x2,
+                      drugalinija.y2,
+                      circle.x,
+                      circle.y
+                    )
+                  ) {
+                    if (circle.color === "gray") {
+                      circle.color = "red";
+                      drawCircles();
+                    }
+                  }
+                  if (
+                    tackaNaDuzi(
+                      trecalinija.x1,
+                      trecalinija.y1,
+                      trecalinija.x2,
+                      trecalinija.y2,
+                      circle.x,
+                      circle.y
+                    )
+                  ) {
+                    if (circle.color === "gray") {
+                      circle.color = "red";
+                      drawCircles();
+                    }
+                  }
+                }
+
+                trougaobrojac = 0;
+                koordinate = [];
+                prvalinija = {};
+                pomocnibrojac = 0;
+              }
+
+              if (brojac % 6 < 3) {
+                //crveni igrac
+                ctx.strokeStyle = "blue";
+                ctx.beginPath();
+                ctx.moveTo(40, 40);
+                ctx.lineTo(40, 650);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(1360, 40);
+                ctx.lineTo(1360, 650);
+                ctx.closePath();
+                ctx.stroke();
+              } else {
+                //zeleni igrac
+                ctx.strokeStyle = "yellow";
+                ctx.beginPath();
+                ctx.moveTo(40, 40);
+                ctx.lineTo(40, 650);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(1360, 40);
+                ctx.lineTo(1360, 650);
+                ctx.closePath();
+                ctx.stroke();
+              }
+              return;
+            } else {
+              if (brojacIgraci % 2 === 0) {
+                alert("Plavi igrač je kliknuo već kliknuto dugme te gubi.");
+                ekranKraj();
+              } else {
+                alert("Žuti igrač je kliknuo već kliknuto dugme te gubi.");
+                ekranKraj();
+              }
+              return;
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
