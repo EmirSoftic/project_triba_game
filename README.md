@@ -1,5 +1,7 @@
 The project components are:
+
   ● Menu with multiple options:
+
     ○ New game (2 players)
     ○ Instructions
     ○ About the project
